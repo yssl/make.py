@@ -32,27 +32,6 @@ vcvarsallpath = 'C:\\Users\\yoonsang\\AppData\\Local\\Programs\\Common\\Microsof
 thisFileDir = os.path.abspath(os.path.dirname(os.path.realpath(__file__)))
 projName = os.path.basename(thisFileDir)
 
-###########################################
-# USER SETTING
-
-# default build root dir is build_projName :
-# parentDirOfProj/
-#   - projName/
-#       - make.py
-#       - CMakeLists.txt
-#   - build_projName
-# but you can modify this line if you want to change it.
-buildRootDir = os.path.abspath(opjoin(opjoin(thisFileDir, os.pardir), 'build_%s'%projName))
-
-binPatternPaths = [
-        ['*/TestsWithGUI/*','Test/TestsWithGUI/TestsWithGUI'],
-        ['*/TestsWithoutGUI/*','Test/TestsWithoutGUI/TestsWithoutGUI'],
-        ['*','Test/TestsWithGUI/TestsWithGUI'],
-        ]
-
-###########################################
-# script
-
 # function
 def run(cmds):
     for cmd in cmds:
@@ -83,7 +62,28 @@ elif target[0]=='d':
     config = 'debug'
     buildType = 'Debug'
 
+###########################################
+# USER SETTING
+
+# default build root dir is build_projName :
+# parentDirOfProj/
+#   - projName/
+#       - make.py
+#       - CMakeLists.txt
+#   - build_projName
+# but you can modify this line if you want to change it.
+buildRootDir = os.path.abspath(opjoin(opjoin(thisFileDir, os.pardir), 'build_%s'%projName))
+
 buildDir = opjoin(buildRootDir, config)
+
+binPatternPaths = [
+        ['*/TestsWithGUI/*','Test/TestsWithGUI/TestsWithGUI'],
+        ['*/TestsWithoutGUI/*','Test/TestsWithoutGUI/TestsWithoutGUI'],
+        ['*','Test/TestsWithGUI/TestsWithGUI'],
+        ]
+
+###########################################
+# script
 
 # bin file processing
 binFile = projName
