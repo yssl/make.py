@@ -118,7 +118,7 @@ elif target[1:]=='run':
     if os.name=='nt':
         run(['%s'%(opjoin(buildDir, binFile))])
     else:
-        run(['./%s'%(opjoin(buildDir, binFile))])
+        run(['%s'%(opjoin(buildDir, binFile))])
 
 elif target[1:]=='buildrun':
     buildargs = ''
@@ -143,7 +143,7 @@ elif target[1:]=='printbin':
     if os.name=='nt':
         run(['echo %s'%(opjoin(buildDir, binFile))])
     else:
-        run(['echo ./%s'%(opjoin(buildDir, binFile))])
+        run(['echo %s'%(opjoin(buildDir, binFile))])
 
 elif target[1:]=='clean':
     if os.name=='nt':
